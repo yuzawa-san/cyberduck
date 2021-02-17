@@ -50,7 +50,7 @@ public class CopyWorkerTest {
     @Test
     public void testCopyFile() throws Exception {
         final Host host = new Host(new AzureProtocol(), "kahy9boj3eib.blob.core.windows.net", new Credentials(
-                System.getProperties().getProperty("azure.account"), System.getProperties().getProperty("azure.key")
+            System.getProperties().getProperty("azure.account"), System.getProperties().getProperty("azure.key")
         ));
         final AzureSession session = new AzureSession(host);
         session.open(Proxy.DIRECT, new DisabledHostKeyCallback(), new DisabledLoginCallback());
@@ -58,12 +58,12 @@ public class CopyWorkerTest {
         final Path home = new Path("cyberduck", EnumSet.of(Path.Type.directory, Path.Type.volume));
         final Path source = new Path(home, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.file));
         final Path target = new Path(home, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.file));
-        new AzureTouchFeature(session, null).touch(source, new TransferStatus());
-        assertTrue(new AzureFindFeature(session, null).find(source));
+        new AzureTouchFeature(session).touch(source, new TransferStatus());
+        assertTrue(new AzureFindFeature(session).find(source));
         final CopyWorker worker = new CopyWorker(Collections.singletonMap(source, target), new SessionPool.SingleSessionPool(session), PathCache.empty(), new DisabledProgressListener(), new DisabledConnectionCallback());
         worker.run(session);
-        assertTrue(new AzureFindFeature(session, null).find(source));
-        assertTrue(new AzureFindFeature(session, null).find(target));
+        assertTrue(new AzureFindFeature(session).find(source));
+        assertTrue(new AzureFindFeature(session).find(target));
         new DeleteWorker(new DisabledLoginCallback(), Arrays.asList(source, target), PathCache.empty(), new DisabledProgressListener()).run(session);
         session.close();
     }
@@ -71,24 +71,24 @@ public class CopyWorkerTest {
     @Test
     public void testCopyFileToDirectory() throws Exception {
         final Host host = new Host(new AzureProtocol(), "kahy9boj3eib.blob.core.windows.net", new Credentials(
-                System.getProperties().getProperty("azure.account"), System.getProperties().getProperty("azure.key")
+            System.getProperties().getProperty("azure.account"), System.getProperties().getProperty("azure.key")
         ));
         final AzureSession session = new AzureSession(host);
         session.open(Proxy.DIRECT, new DisabledHostKeyCallback(), new DisabledLoginCallback());
         session.login(Proxy.DIRECT, new DisabledLoginCallback(), new DisabledCancelCallback());
         final Path home = new Path("cyberduck", EnumSet.of(Path.Type.directory, Path.Type.volume));
         final Path sourceFile = new Path(home, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.file));
-        new AzureTouchFeature(session, null).touch(sourceFile, new TransferStatus());
-        assertTrue(new AzureFindFeature(session, null).find(sourceFile));
+        new AzureTouchFeature(session).touch(sourceFile, new TransferStatus());
+        assertTrue(new AzureFindFeature(session).find(sourceFile));
         final Path targetFolder = new Path(home, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.directory));
         final Path targetFile = new Path(targetFolder, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.file));
-        new AzureDirectoryFeature(session, null).mkdir(targetFolder, null, new TransferStatus());
-        assertTrue(new AzureFindFeature(session, null).find(targetFolder));
+        new AzureDirectoryFeature(session).mkdir(targetFolder, null, new TransferStatus());
+        assertTrue(new AzureFindFeature(session).find(targetFolder));
         // copy file into vault
         final CopyWorker worker = new CopyWorker(Collections.singletonMap(sourceFile, targetFile), new SessionPool.SingleSessionPool(session), PathCache.empty(), new DisabledProgressListener(), new DisabledConnectionCallback());
         worker.run(session);
-        assertTrue(new AzureFindFeature(session, null).find(sourceFile));
-        assertTrue(new AzureFindFeature(session, null).find(targetFile));
+        assertTrue(new AzureFindFeature(session).find(sourceFile));
+        assertTrue(new AzureFindFeature(session).find(targetFile));
         new DeleteWorker(new DisabledLoginCallback(), Arrays.asList(sourceFile, targetFolder), PathCache.empty(), new DisabledProgressListener()).run(session);
         session.close();
     }
@@ -96,7 +96,7 @@ public class CopyWorkerTest {
     @Test
     public void testCopyDirectory() throws Exception {
         final Host host = new Host(new AzureProtocol(), "kahy9boj3eib.blob.core.windows.net", new Credentials(
-                System.getProperties().getProperty("azure.account"), System.getProperties().getProperty("azure.key")
+            System.getProperties().getProperty("azure.account"), System.getProperties().getProperty("azure.key")
         ));
         final AzureSession session = new AzureSession(host);
         session.open(Proxy.DIRECT, new DisabledHostKeyCallback(), new DisabledLoginCallback());
@@ -104,19 +104,19 @@ public class CopyWorkerTest {
         final Path home = new Path("cyberduck", EnumSet.of(Path.Type.directory, Path.Type.volume));
         final Path folder = new Path(home, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.directory));
         final Path sourceFile = new Path(folder, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.file));
-        new AzureDirectoryFeature(session, null).mkdir(folder, null, new TransferStatus());
-        new AzureTouchFeature(session, null).touch(sourceFile, new TransferStatus());
-        assertTrue(new AzureFindFeature(session, null).find(folder));
-        assertTrue(new AzureFindFeature(session, null).find(sourceFile));
+        new AzureDirectoryFeature(session).mkdir(folder, null, new TransferStatus());
+        new AzureTouchFeature(session).touch(sourceFile, new TransferStatus());
+        assertTrue(new AzureFindFeature(session).find(folder));
+        assertTrue(new AzureFindFeature(session).find(sourceFile));
         // move directory into vault
         final Path targetFolder = new Path(home, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.directory));
         final Path targetFile = new Path(targetFolder, sourceFile.getName(), EnumSet.of(Path.Type.file));
         final CopyWorker worker = new CopyWorker(Collections.singletonMap(folder, targetFolder), new SessionPool.SingleSessionPool(session), PathCache.empty(), new DisabledProgressListener(), new DisabledConnectionCallback());
         worker.run(session);
-        assertTrue(new AzureFindFeature(session, null).find(targetFolder));
-        assertTrue(new AzureFindFeature(session, null).find(targetFile));
-        assertTrue(new AzureFindFeature(session, null).find(folder));
-        assertTrue(new AzureFindFeature(session, null).find(sourceFile));
+        assertTrue(new AzureFindFeature(session).find(targetFolder));
+        assertTrue(new AzureFindFeature(session).find(targetFile));
+        assertTrue(new AzureFindFeature(session).find(folder));
+        assertTrue(new AzureFindFeature(session).find(sourceFile));
         new DeleteWorker(new DisabledLoginCallback(), Arrays.asList(folder, targetFolder), PathCache.empty(), new DisabledProgressListener()).run(session);
         session.close();
     }

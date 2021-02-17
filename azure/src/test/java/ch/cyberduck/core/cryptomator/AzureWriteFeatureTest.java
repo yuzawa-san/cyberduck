@@ -64,8 +64,6 @@ import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.EnumSet;
 
-import com.microsoft.azure.storage.OperationContext;
-
 import static org.junit.Assert.*;
 
 @Category(IntegrationTest.class)
@@ -88,7 +86,7 @@ public class AzureWriteFeatureTest extends AbstractAzureTest {
             new Path(home, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.directory)));
         final Path vault = cryptomator.create(session, null, new VaultCredentials("test"), new DisabledPasswordStore(), vaultVersion);
         session.withRegistry(new DefaultVaultRegistry(new DisabledPasswordStore(), new DisabledPasswordCallback(), cryptomator));
-        final CryptoWriteFeature<Void> writer = new CryptoWriteFeature<>(session, new AzureWriteFeature(session, null), cryptomator);
+        final CryptoWriteFeature<Void> writer = new CryptoWriteFeature<>(session, new AzureWriteFeature(session), cryptomator);
         final FileHeader header = cryptomator.getFileHeaderCryptor().create();
         status.setHeader(cryptomator.getFileHeaderCryptor().encryptHeader(header));
         status.setNonces(new RotatingNonceGenerator(cryptomator.numberOfChunks(content.length)));
@@ -98,16 +96,15 @@ public class AzureWriteFeatureTest extends AbstractAzureTest {
         assertNotNull(out);
         new StreamCopier(status, status).transfer(new ByteArrayInputStream(content), out);
         out.close();
-        final OperationContext context = new OperationContext();
-        assertTrue(new CryptoFindFeature(session, new AzureFindFeature(session, context), cryptomator).find(test));
-        assertEquals(content.length, new CryptoListService(session, new AzureListService(session, context), cryptomator).list(test.getParent(), new DisabledListProgressListener()).get(test).attributes().getSize());
-        assertEquals(content.length, new CryptoWriteFeature<>(session, new AzureWriteFeature(session, context, new DefaultFindFeature(session), new DefaultAttributesFinderFeature(session)), cryptomator).append(test, status.getLength(), PathCache.empty()).size, 0L);
-        assertEquals(content.length, new CryptoWriteFeature<>(session, new AzureWriteFeature(session, context, new AzureFindFeature(session, context), new AzureAttributesFinderFeature(session, context)), cryptomator).append(test, status.getLength(), PathCache.empty()).size, 0L);
+        assertTrue(new CryptoFindFeature(session, new AzureFindFeature(session), cryptomator).find(test));
+        assertEquals(content.length, new CryptoListService(session, new AzureListService(session), cryptomator).list(test.getParent(), new DisabledListProgressListener()).get(test).attributes().getSize());
+        assertEquals(content.length, new CryptoWriteFeature<>(session, new AzureWriteFeature(session, new DefaultFindFeature(session), new DefaultAttributesFinderFeature(session)), cryptomator).append(test, status.getLength(), PathCache.empty()).size, 0L);
+        assertEquals(content.length, new CryptoWriteFeature<>(session, new AzureWriteFeature(session, new AzureFindFeature(session), new AzureAttributesFinderFeature(session)), cryptomator).append(test, status.getLength(), PathCache.empty()).size, 0L);
         final ByteArrayOutputStream buffer = new ByteArrayOutputStream(content.length);
-        final InputStream in = new CryptoReadFeature(session, new AzureReadFeature(session, context), cryptomator).read(test, new TransferStatus().length(content.length), new DisabledConnectionCallback());
+        final InputStream in = new CryptoReadFeature(session, new AzureReadFeature(session), cryptomator).read(test, new TransferStatus().length(content.length), new DisabledConnectionCallback());
         new StreamCopier(status, status).transfer(in, buffer);
         assertArrayEquals(content, buffer.toByteArray());
-        cryptomator.getFeature(session, Delete.class, new AzureDeleteFeature(session, context)).delete(Arrays.asList(test, vault), new DisabledLoginCallback(), new Delete.DisabledCallback());
+        cryptomator.getFeature(session, Delete.class, new AzureDeleteFeature(session)).delete(Arrays.asList(test, vault), new DisabledLoginCallback(), new Delete.DisabledCallback());
         session.close();
     }
 }

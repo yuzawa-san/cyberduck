@@ -28,24 +28,18 @@ import java.util.UUID;
 import static org.junit.Assert.assertTrue;
 
 @Category(IntegrationTest.class)
-public class AzureCopyFeatureTest {
+public class AzureCopyFeatureTest extends AbstractAzureTest {
 
     @Test
     public void testCopy() throws Exception {
-        final Host host = new Host(new AzureProtocol(), "kahy9boj3eib.blob.core.windows.net", new Credentials(
-            System.getProperties().getProperty("azure.account"), System.getProperties().getProperty("azure.key")
-        ));
-        final AzureSession session = new AzureSession(host);
-        new LoginConnectionService(new DisabledLoginCallback(), new DisabledHostKeyCallback(),
-            new DisabledPasswordStore(), new DisabledProgressListener()).connect(session, new DisabledCancelCallback());
         final Path container = new Path("cyberduck", EnumSet.of(Path.Type.directory, Path.Type.volume));
         final Path test = new Path(container, UUID.randomUUID().toString(), EnumSet.of(Path.Type.file));
-        new AzureTouchFeature(session, null).touch(test, new TransferStatus());
+        new AzureTouchFeature(session).touch(test, new TransferStatus());
         final Path copy = new Path(container, UUID.randomUUID().toString(), EnumSet.of(Path.Type.file));
-        new AzureCopyFeature(session, null).copy(test, copy, new TransferStatus(), new DisabledConnectionCallback());
-        assertTrue(new AzureFindFeature(session, null).find(test));
-        assertTrue(new AzureFindFeature(session, null).find(copy));
-        new AzureDeleteFeature(session, null).delete(Arrays.asList(test, copy), new DisabledLoginCallback(), new Delete.DisabledCallback());
+        new AzureCopyFeature(session).copy(test, copy, new TransferStatus(), new DisabledConnectionCallback());
+        assertTrue(new AzureFindFeature(session).find(test));
+        assertTrue(new AzureFindFeature(session).find(copy));
+        new AzureDeleteFeature(session).delete(Arrays.asList(test, copy), new DisabledLoginCallback(), new Delete.DisabledCallback());
         session.close();
     }
 
@@ -74,34 +68,28 @@ public class AzureCopyFeatureTest {
             new DisabledPasswordStore(), new DisabledProgressListener()).connect(session, new DisabledCancelCallback());
         final Path container = new Path("cyberduck", EnumSet.of(Path.Type.directory, Path.Type.volume));
         final Path test = new Path(container, UUID.randomUUID().toString(), EnumSet.of(Path.Type.file));
-        new AzureTouchFeature(session, null).touch(test, new TransferStatus());
+        new AzureTouchFeature(session).touch(test, new TransferStatus());
         final Path copy = new Path(container, UUID.randomUUID().toString(), EnumSet.of(Path.Type.file));
-        new AzureCopyFeature(session, null).copy(test, copy, new TransferStatus(), new DisabledConnectionCallback());
-        assertTrue(new AzureFindFeature(session, null).find(test));
-        assertTrue(new AzureFindFeature(session, null).find(copy));
-        new AzureDeleteFeature(session, null).delete(Arrays.asList(test, copy), new DisabledLoginCallback(), new Delete.DisabledCallback());
+        new AzureCopyFeature(session).copy(test, copy, new TransferStatus(), new DisabledConnectionCallback());
+        assertTrue(new AzureFindFeature(session).find(test));
+        assertTrue(new AzureFindFeature(session).find(copy));
+        new AzureDeleteFeature(session).delete(Arrays.asList(test, copy), new DisabledLoginCallback(), new Delete.DisabledCallback());
         session.close();
     }
 
     @Test
     public void testCopyToExistingFile() throws Exception {
-        final Host host = new Host(new AzureProtocol(), "kahy9boj3eib.blob.core.windows.net", new Credentials(
-            System.getProperties().getProperty("azure.account"), System.getProperties().getProperty("azure.key")
-        ));
-        final AzureSession session = new AzureSession(host);
-        new LoginConnectionService(new DisabledLoginCallback(), new DisabledHostKeyCallback(),
-            new DisabledPasswordStore(), new DisabledProgressListener()).connect(session, new DisabledCancelCallback());
         final Path container = new Path("cyberduck", EnumSet.of(Path.Type.directory, Path.Type.volume));
         final Path folder = new Path(container, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.directory));
-        new AzureDirectoryFeature(session, null).mkdir(folder, null, new TransferStatus());
+        new AzureDirectoryFeature(session).mkdir(folder, null, new TransferStatus());
         final Path test = new Path(folder, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.file));
-        new AzureTouchFeature(session, null).touch(test, new TransferStatus());
+        new AzureTouchFeature(session).touch(test, new TransferStatus());
         final Path copy = new Path(folder, new AlphanumericRandomStringService().random(), EnumSet.of(Path.Type.file));
-        new AzureTouchFeature(session, null).touch(copy, new TransferStatus());
-        new AzureCopyFeature(session, null).copy(test, copy, new TransferStatus().exists(true), new DisabledConnectionCallback());
+        new AzureTouchFeature(session).touch(copy, new TransferStatus());
+        new AzureCopyFeature(session).copy(test, copy, new TransferStatus().exists(true), new DisabledConnectionCallback());
         final Find find = new DefaultFindFeature(session);
         assertTrue(find.find(test));
         assertTrue(find.find(copy));
-        new AzureDeleteFeature(session, null).delete(Arrays.asList(test, copy), new DisabledLoginCallback(), new Delete.DisabledCallback());
+        new AzureDeleteFeature(session).delete(Arrays.asList(test, copy), new DisabledLoginCallback(), new Delete.DisabledCallback());
     }
 }
