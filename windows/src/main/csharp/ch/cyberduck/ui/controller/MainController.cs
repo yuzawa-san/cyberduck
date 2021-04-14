@@ -119,6 +119,7 @@ namespace Ch.Cyberduck.Ui.Controller
         private WinSparkle.win_sparkle_shutdown_request_callback_t _shutdownRequestCallback;
 
         private PeriodicUpdateChecker _updater;
+        private final ProfilesUpdater _profiles;
         private ServiceHost serviceHost;
 
         public static IList<BrowserController> Browsers
@@ -842,6 +843,11 @@ namespace Ch.Cyberduck.Ui.Controller
                     }
                 }
             }
+            if (PreferencesFactory.get().getBoolean("profiles.discovery.updater.enable")) {
+                _profiles = new PeriodicProfilesUpdater();
+                // Synchronize and register timer
+                _profiles.register();
+            }
         }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
@@ -930,6 +936,10 @@ namespace Ch.Cyberduck.Ui.Controller
             if (_updater != null && !updating)
             {
                 _updater.unregister();
+            }
+            if (_profiles != null)
+            {
+                _profiles.unregister();
             }
         }
 
