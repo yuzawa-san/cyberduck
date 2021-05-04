@@ -80,6 +80,7 @@ using Application = ch.cyberduck.core.local.Application;
 using ArrayList = System.Collections.ArrayList;
 using UnhandledExceptionEventArgs = System.UnhandledExceptionEventArgs;
 using ch.cyberduck.core.oauth;
+using ch.cyberduck.core.profiles;
 
 namespace Ch.Cyberduck.Ui.Controller
 {
@@ -119,7 +120,7 @@ namespace Ch.Cyberduck.Ui.Controller
         private WinSparkle.win_sparkle_shutdown_request_callback_t _shutdownRequestCallback;
 
         private PeriodicUpdateChecker _updater;
-        private final ProfilesUpdater _profiles;
+        private ProfilesUpdater _profiles;
         private ServiceHost serviceHost;
 
         public static IList<BrowserController> Browsers
@@ -844,7 +845,7 @@ namespace Ch.Cyberduck.Ui.Controller
                 }
             }
             if (PreferencesFactory.get().getBoolean("profiles.discovery.updater.enable")) {
-                _profiles = new PeriodicProfilesUpdater(_application);
+                _profiles = new PeriodicProfilesUpdater(_controller);
                 // Synchronize and register timer
                 _profiles.register();
             }
