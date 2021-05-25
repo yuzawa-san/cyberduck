@@ -236,6 +236,8 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.cryptomatorAutoDetectCheckBox = new System.Windows.Forms.CheckBox();
+            this.managedProfilesPanel = new Ch.Cyberduck.Ui.Winforms.Controls.ManagedPanel();
+            this.profilesPageHost = new System.Windows.Forms.Integration.ElementHost();
             this.toolStrip = new Ch.Cyberduck.Ui.Winforms.Controls.ClickThroughToolStrip();
             this.generalButton = new System.Windows.Forms.ToolStripButton();
             this.browserButton = new System.Windows.Forms.ToolStripButton();
@@ -249,8 +251,6 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.cryptomatorButton = new System.Windows.Forms.ToolStripButton();
             this.updateButton = new System.Windows.Forms.ToolStripButton();
             this.languageButton = new System.Windows.Forms.ToolStripButton();
-            this.managedProfilesPanel = new Ch.Cyberduck.Ui.Winforms.Controls.ManagedPanel();
-            this.elementHost1 = new System.Windows.Forms.Integration.ElementHost();
             this.panelManager.SuspendLayout();
             this.managedGeneralPanel.SuspendLayout();
             this.tableLayoutPanelGeneral.SuspendLayout();
@@ -345,8 +345,8 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.tableLayoutPanel24.SuspendLayout();
             this.groupBox15.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.toolStrip.SuspendLayout();
             this.managedProfilesPanel.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // iconList
@@ -388,7 +388,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.managedGeneralPanel.Controls.Add(this.tableLayoutPanelGeneral);
             this.managedGeneralPanel.Location = new System.Drawing.Point(0, 0);
             this.managedGeneralPanel.Name = "managedGeneralPanel";
-            this.managedGeneralPanel.Size = new System.Drawing.Size(654, 479);
+            this.managedGeneralPanel.Size = new System.Drawing.Size(0, 0);
             this.managedGeneralPanel.Text = "managedPanel1";
             // 
             // tableLayoutPanelGeneral
@@ -405,7 +405,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.tableLayoutPanelGeneral.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelGeneral.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelGeneral.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanelGeneral.Size = new System.Drawing.Size(654, 479);
+            this.tableLayoutPanelGeneral.Size = new System.Drawing.Size(0, 0);
             this.tableLayoutPanelGeneral.TabIndex = 7;
             // 
             // groupBox1
@@ -415,7 +415,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(3, 171);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(648, 152);
+            this.groupBox1.Size = new System.Drawing.Size(1, 152);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection";
@@ -443,7 +443,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(642, 130);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(0, 130);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // keychainCheckbox
@@ -529,7 +529,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.browserGroupbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.browserGroupbox.Location = new System.Drawing.Point(3, 3);
             this.browserGroupbox.Name = "browserGroupbox";
-            this.browserGroupbox.Size = new System.Drawing.Size(648, 162);
+            this.browserGroupbox.Size = new System.Drawing.Size(1, 162);
             this.browserGroupbox.TabIndex = 0;
             this.browserGroupbox.TabStop = false;
             this.browserGroupbox.Text = "Browser";
@@ -561,7 +561,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(642, 140);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(0, 140);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // saveWorkspaceCheckbox
@@ -647,7 +647,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.managedSftpPanel.Controls.Add(this.tableLayoutPanel25);
             this.managedSftpPanel.Location = new System.Drawing.Point(0, 0);
             this.managedSftpPanel.Name = "managedSftpPanel";
-            this.managedSftpPanel.Size = new System.Drawing.Size(654, 479);
+            this.managedSftpPanel.Size = new System.Drawing.Size(0, 0);
             this.managedSftpPanel.Text = "managedPanel1";
             // 
             // tableLayoutPanel25
@@ -663,7 +663,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel25.Size = new System.Drawing.Size(654, 479);
+            this.tableLayoutPanel25.Size = new System.Drawing.Size(0, 0);
             this.tableLayoutPanel25.TabIndex = 0;
             // 
             // groupBox18
@@ -673,7 +673,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.groupBox18.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox18.Location = new System.Drawing.Point(3, 3);
             this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(648, 81);
+            this.groupBox18.Size = new System.Drawing.Size(1, 81);
             this.groupBox18.TabIndex = 2;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "File Transfers";
@@ -694,7 +694,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.tableLayoutPanel27.RowCount = 2;
             this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel27.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel27.Size = new System.Drawing.Size(642, 59);
+            this.tableLayoutPanel27.Size = new System.Drawing.Size(0, 59);
             this.tableLayoutPanel27.TabIndex = 4;
             // 
             // label27
@@ -705,7 +705,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.label27.Location = new System.Drawing.Point(8, 5);
             this.label27.Name = "label27";
             this.label27.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.label27.Size = new System.Drawing.Size(268, 20);
+            this.label27.Size = new System.Drawing.Size(1, 5);
             this.label27.TabIndex = 1;
             this.label27.Text = "SSH supports both file transfers over SFTP or SCP.";
             // 
@@ -714,18 +714,18 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.sshTransfersCombobox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.sshTransfersCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sshTransfersCombobox.FormattingEnabled = true;
-            this.sshTransfersCombobox.Location = new System.Drawing.Point(324, 28);
+            this.sshTransfersCombobox.Location = new System.Drawing.Point(8, 20);
             this.sshTransfersCombobox.Name = "sshTransfersCombobox";
-            this.sshTransfersCombobox.Size = new System.Drawing.Size(310, 23);
+            this.sshTransfersCombobox.Size = new System.Drawing.Size(1, 23);
             this.sshTransfersCombobox.TabIndex = 2;
             // 
             // label28
             // 
             this.label28.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(208, 32);
+            this.label28.Location = new System.Drawing.Point(8, 24);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(110, 15);
+            this.label28.Size = new System.Drawing.Size(1, 15);
             this.label28.TabIndex = 3;
             this.label28.Text = "Transfer Files using:";
             this.label28.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -793,7 +793,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.label29.Location = new System.Drawing.Point(8, 5);
             this.label29.Name = "label29";
             this.label29.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.label29.Size = new System.Drawing.Size(366, 20);
+            this.label29.Size = new System.Drawing.Size(365, 20);
             this.label29.TabIndex = 0;
             this.label29.Text = "The geographic location in which buckets will be created by default.";
             // 
@@ -1245,7 +1245,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.label2.Location = new System.Drawing.Point(8, 5);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.label2.Size = new System.Drawing.Size(609, 35);
+            this.label2.Size = new System.Drawing.Size(608, 35);
             this.label2.TabIndex = 0;
             this.label2.Text = "The selected default text encoding is used to convert characters in filenames dis" +
     "played in the browser. This should match the text encoding used on the server.";
@@ -1485,7 +1485,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.label18.Location = new System.Drawing.Point(8, 5);
             this.label18.Name = "label18";
             this.label18.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.label18.Size = new System.Drawing.Size(321, 20);
+            this.label18.Size = new System.Drawing.Size(322, 20);
             this.label18.TabIndex = 0;
             this.label18.Text = "Changes take effect the next time you open the application.";
             // 
@@ -1494,7 +1494,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.managedEditorPanel.Controls.Add(this.tableLayoutPanel3);
             this.managedEditorPanel.Location = new System.Drawing.Point(0, 0);
             this.managedEditorPanel.Name = "managedEditorPanel";
-            this.managedEditorPanel.Size = new System.Drawing.Size(654, 479);
+            this.managedEditorPanel.Size = new System.Drawing.Size(0, 0);
             this.managedEditorPanel.Text = "managedPanel1";
             // 
             // tableLayoutPanel3
@@ -1509,7 +1509,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(654, 479);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(0, 0);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // groupBox2
@@ -1518,7 +1518,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(3, 3);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(648, 233);
+            this.groupBox2.Size = new System.Drawing.Size(1, 1);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Editor";
@@ -1538,7 +1538,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(642, 211);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(0, 0);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // label14
@@ -1550,7 +1550,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.label14.Location = new System.Drawing.Point(8, 5);
             this.label14.Name = "label14";
             this.label14.Padding = new System.Windows.Forms.Padding(0, 0, 0, 5);
-            this.label14.Size = new System.Drawing.Size(619, 20);
+            this.label14.Size = new System.Drawing.Size(1, 5);
             this.label14.TabIndex = 1;
             this.label14.Text = "Select a text editor to open files with by default if no other application instal" +
     "led can be found to edit a given file type.";
@@ -1563,18 +1563,18 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.editorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.editorComboBox.FormattingEnabled = true;
             this.editorComboBox.IconMember = null;
-            this.editorComboBox.Location = new System.Drawing.Point(8, 28);
+            this.editorComboBox.Location = new System.Drawing.Point(8, 13);
             this.editorComboBox.Name = "editorComboBox";
-            this.editorComboBox.Size = new System.Drawing.Size(626, 24);
+            this.editorComboBox.Size = new System.Drawing.Size(1, 24);
             this.editorComboBox.TabIndex = 2;
             this.editorComboBox.SelectionChangeCommitted += new System.EventHandler(this.editorComboBox_SelectionChangeCommitted);
             // 
             // alwaysUseDefaultEditorCheckBox
             // 
             this.alwaysUseDefaultEditorCheckBox.AutoSize = true;
-            this.alwaysUseDefaultEditorCheckBox.Location = new System.Drawing.Point(8, 58);
+            this.alwaysUseDefaultEditorCheckBox.Location = new System.Drawing.Point(8, 43);
             this.alwaysUseDefaultEditorCheckBox.Name = "alwaysUseDefaultEditorCheckBox";
-            this.alwaysUseDefaultEditorCheckBox.Size = new System.Drawing.Size(168, 19);
+            this.alwaysUseDefaultEditorCheckBox.Size = new System.Drawing.Size(1, 19);
             this.alwaysUseDefaultEditorCheckBox.TabIndex = 3;
             this.alwaysUseDefaultEditorCheckBox.Text = "Always use this application";
             this.alwaysUseDefaultEditorCheckBox.UseVisualStyleBackColor = true;
@@ -1740,7 +1740,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.tableLayoutPanel23.SetColumnSpan(this.doubleClickEditorCheckbox, 2);
             this.doubleClickEditorCheckbox.Location = new System.Drawing.Point(8, 43);
             this.doubleClickEditorCheckbox.Name = "doubleClickEditorCheckbox";
-            this.doubleClickEditorCheckbox.Size = new System.Drawing.Size(236, 19);
+            this.doubleClickEditorCheckbox.Size = new System.Drawing.Size(237, 19);
             this.doubleClickEditorCheckbox.TabIndex = 1;
             this.doubleClickEditorCheckbox.Text = "Double click opens file in external editor";
             this.doubleClickEditorCheckbox.UseVisualStyleBackColor = true;
@@ -1803,7 +1803,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.groupBox6.AutoSize = true;
             this.groupBox6.Controls.Add(this.tableLayoutPanel8);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox6.Location = new System.Drawing.Point(3, 293);
+            this.groupBox6.Location = new System.Drawing.Point(3, 318);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(640, 115);
             this.groupBox6.TabIndex = 6;
@@ -1835,9 +1835,9 @@ namespace Ch.Cyberduck.Ui.Winforms
             // 
             this.label12.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(76, 37);
+            this.label12.Location = new System.Drawing.Point(75, 37);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 15);
+            this.label12.Size = new System.Drawing.Size(77, 15);
             this.label12.TabIndex = 5;
             this.label12.Text = "Existing Files:";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -1882,7 +1882,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox5.Location = new System.Drawing.Point(3, 145);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(640, 142);
+            this.groupBox5.Size = new System.Drawing.Size(640, 167);
             this.groupBox5.TabIndex = 5;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Downloads";
@@ -1941,9 +1941,9 @@ namespace Ch.Cyberduck.Ui.Winforms
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(76, 93);
+            this.label11.Location = new System.Drawing.Point(75, 93);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(76, 15);
+            this.label11.Size = new System.Drawing.Size(77, 15);
             this.label11.TabIndex = 5;
             this.label11.Text = "Existing Files:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -2090,9 +2090,9 @@ namespace Ch.Cyberduck.Ui.Winforms
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 12);
+            this.label1.Location = new System.Drawing.Point(75, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 15);
+            this.label1.Size = new System.Drawing.Size(77, 15);
             this.label1.TabIndex = 5;
             this.label1.Text = "Transfer Files:";
             // 
@@ -2925,7 +2925,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.downloadSkipCheckbox.AutoSize = true;
             this.downloadSkipCheckbox.Location = new System.Drawing.Point(8, 10);
             this.downloadSkipCheckbox.Name = "downloadSkipCheckbox";
-            this.downloadSkipCheckbox.Size = new System.Drawing.Size(247, 19);
+            this.downloadSkipCheckbox.Size = new System.Drawing.Size(248, 19);
             this.downloadSkipCheckbox.TabIndex = 0;
             this.downloadSkipCheckbox.Text = "Skip files matching the regular expression:";
             this.downloadSkipCheckbox.UseVisualStyleBackColor = true;
@@ -2993,7 +2993,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.uploadSkipCheckbox.AutoSize = true;
             this.uploadSkipCheckbox.Location = new System.Drawing.Point(8, 10);
             this.uploadSkipCheckbox.Name = "uploadSkipCheckbox";
-            this.uploadSkipCheckbox.Size = new System.Drawing.Size(247, 19);
+            this.uploadSkipCheckbox.Size = new System.Drawing.Size(248, 19);
             this.uploadSkipCheckbox.TabIndex = 0;
             this.uploadSkipCheckbox.Text = "Skip files matching the regular expression:";
             this.uploadSkipCheckbox.UseVisualStyleBackColor = true;
@@ -3082,6 +3082,25 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.cryptomatorAutoDetectCheckBox.UseVisualStyleBackColor = true;
             this.cryptomatorAutoDetectCheckBox.CheckedChanged += new System.EventHandler(this.cryptomatorAutoDetectCheckBox_CheckedChanged);
             // 
+            // managedProfilesPanel
+            // 
+            this.managedProfilesPanel.Controls.Add(this.profilesPageHost);
+            this.managedProfilesPanel.Location = new System.Drawing.Point(0, 0);
+            this.managedProfilesPanel.Name = "managedProfilesPanel";
+            this.managedProfilesPanel.Size = new System.Drawing.Size(0, 0);
+            this.managedProfilesPanel.Text = "managedPanel1";
+            // 
+            // profilesPageHost
+            // 
+            this.profilesPageHost.BackColorTransparent = true;
+            this.profilesPageHost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.profilesPageHost.Location = new System.Drawing.Point(0, 0);
+            this.profilesPageHost.Name = "profilesPageHost";
+            this.profilesPageHost.Size = new System.Drawing.Size(0, 0);
+            this.profilesPageHost.TabIndex = 0;
+            this.profilesPageHost.Text = "elementHost1";
+            this.profilesPageHost.Child = null;
+            // 
             // toolStrip
             // 
             this.toolStrip.CanOverflow = false;
@@ -3138,7 +3157,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.transfersButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.transfersButton.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.transfersButton.Name = "transfersButton";
-            this.transfersButton.Size = new System.Drawing.Size(58, 69);
+            this.transfersButton.Size = new System.Drawing.Size(57, 69);
             this.transfersButton.Text = "Transfers";
             this.transfersButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.transfersButton.Click += new System.EventHandler(this.transfersButton_Click);
@@ -3170,7 +3189,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.sftpButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.sftpButton.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.sftpButton.Name = "sftpButton";
-            this.sftpButton.Size = new System.Drawing.Size(37, 69);
+            this.sftpButton.Size = new System.Drawing.Size(36, 69);
             this.sftpButton.Text = "SFTP";
             this.sftpButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.sftpButton.Visible = false;
@@ -3246,24 +3265,6 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.languageButton.Text = "Language";
             this.languageButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.languageButton.Click += new System.EventHandler(this.languageButton_Click);
-            // 
-            // managedProfilesPanel
-            // 
-            this.managedProfilesPanel.Controls.Add(this.elementHost1);
-            this.managedProfilesPanel.Location = new System.Drawing.Point(0, 0);
-            this.managedProfilesPanel.Name = "managedProfilesPanel";
-            this.managedProfilesPanel.Size = new System.Drawing.Size(654, 479);
-            this.managedProfilesPanel.Text = "managedPanel1";
-            // 
-            // elementHost1
-            // 
-            this.elementHost1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.elementHost1.Location = new System.Drawing.Point(0, 0);
-            this.elementHost1.Name = "elementHost1";
-            this.elementHost1.Size = new System.Drawing.Size(654, 479);
-            this.elementHost1.TabIndex = 0;
-            this.elementHost1.Text = "elementHost1";
-            this.elementHost1.Child = null;
             // 
             // PreferencesForm
             // 
@@ -3454,9 +3455,9 @@ namespace Ch.Cyberduck.Ui.Winforms
             this.groupBox15.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            this.managedProfilesPanel.ResumeLayout(false);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            this.managedProfilesPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3683,6 +3684,6 @@ namespace Ch.Cyberduck.Ui.Winforms
         private System.Windows.Forms.CheckBox segmentedDownloadsCheckbox;
         private System.Windows.Forms.ToolStripButton profilesButton;
         private ManagedPanel managedProfilesPanel;
-        private System.Windows.Forms.Integration.ElementHost elementHost1;
+        private System.Windows.Forms.Integration.ElementHost profilesPageHost;
     }
 }

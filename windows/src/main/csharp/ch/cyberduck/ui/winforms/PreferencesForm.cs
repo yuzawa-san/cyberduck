@@ -26,6 +26,8 @@ using Ch.Cyberduck.Core;
 using Ch.Cyberduck.Ui.Controller;
 using Ch.Cyberduck.Ui.Core.Resources;
 using Ch.Cyberduck.Ui.Winforms.Controls;
+using Cyberduck.Core.Refresh.Views;
+using StructureMap;
 using Application = ch.cyberduck.core.local.Application;
 
 namespace Ch.Cyberduck.Ui.Winforms
@@ -123,6 +125,8 @@ namespace Ch.Cyberduck.Ui.Winforms
             generalButton_Click(this, EventArgs.Empty);
             toolStrip.Renderer = new FirefoxStyleRenderer();
 
+            profilesPageHost.Child = ObjectFactory.GetInstance<ProfilesPage>();
+
             //todo
             CenterToParent();
 
@@ -131,12 +135,12 @@ namespace Ch.Cyberduck.Ui.Winforms
 
         public override string[] BundleNames
         {
-            get { return new[] {"Preferences"}; }
+            get { return new[] { "Preferences" }; }
         }
 
         public Application DefaultEditor
         {
-            get { return (Application) editorComboBox.SelectedValue; }
+            get { return (Application)editorComboBox.SelectedValue; }
             set
             {
                 editorComboBox.SelectedValue = value;
@@ -158,7 +162,7 @@ namespace Ch.Cyberduck.Ui.Winforms
 
         public Host DefaultBookmark
         {
-            get { return (Host) connectBookmarkCombobox.SelectedValue; }
+            get { return (Host)connectBookmarkCombobox.SelectedValue; }
             set
             {
                 if (null != value)
@@ -250,7 +254,7 @@ namespace Ch.Cyberduck.Ui.Winforms
 
         public Host.TransferType TransferMode
         {
-            get { return (Host.TransferType) transferFilesCombobox.SelectedValue; }
+            get { return (Host.TransferType)transferFilesCombobox.SelectedValue; }
             set { transferFilesCombobox.SelectedValue = value; }
         }
 
@@ -626,25 +630,25 @@ namespace Ch.Cyberduck.Ui.Winforms
 
         public string DefaultBucketLocation
         {
-            get { return (string) defaultBucketLocationCombobox.SelectedValue; }
+            get { return (string)defaultBucketLocationCombobox.SelectedValue; }
             set { defaultBucketLocationCombobox.SelectedValue = value; }
         }
 
         public string DefaultEncryption
         {
-            get { return (string) defaultEncryptionComboBox.SelectedValue; }
+            get { return (string)defaultEncryptionComboBox.SelectedValue; }
             set { defaultEncryptionComboBox.SelectedValue = value; }
         }
 
         public float DefaultDownloadThrottle
         {
-            get { return (float) defaultDownloadThrottleCombobox.SelectedValue; }
+            get { return (float)defaultDownloadThrottleCombobox.SelectedValue; }
             set { defaultDownloadThrottleCombobox.SelectedValue = value; }
         }
 
         public float DefaultUploadThrottle
         {
-            get { return (float) defaultUploadThrottleCombobox.SelectedValue; }
+            get { return (float)defaultUploadThrottleCombobox.SelectedValue; }
             set { defaultUploadThrottleCombobox.SelectedValue = value; }
         }
 
@@ -677,7 +681,7 @@ namespace Ch.Cyberduck.Ui.Winforms
 
         public string UpdateFeed
         {
-            get { return (string) updateFeedComboBox.SelectedValue; }
+            get { return (string)updateFeedComboBox.SelectedValue; }
             set { updateFeedComboBox.SelectedValue = value; }
         }
 
@@ -786,13 +790,13 @@ namespace Ch.Cyberduck.Ui.Winforms
 
         public int BookmarkSize
         {
-            get { return (int) bookmarkSizeComboBox.SelectedValue; }
+            get { return (int)bookmarkSizeComboBox.SelectedValue; }
             set { bookmarkSizeComboBox.SelectedValue = value; }
         }
 
         public string DefaultStorageClass
         {
-            get { return (string) defaultStorageClassComboBox.SelectedValue; }
+            get { return (string)defaultStorageClassComboBox.SelectedValue; }
             set { defaultStorageClassComboBox.SelectedValue = value; }
         }
 
@@ -916,13 +920,13 @@ namespace Ch.Cyberduck.Ui.Winforms
 
         public Protocol DefaultProtocol
         {
-            get { return (Protocol) defaultProtocolCombobox.SelectedValue; }
+            get { return (Protocol)defaultProtocolCombobox.SelectedValue; }
             set { defaultProtocolCombobox.SelectedValue = value; }
         }
 
         public string CurrentLocale
         {
-            get { return (string) languageComboBox.SelectedValue; }
+            get { return (string)languageComboBox.SelectedValue; }
             set { languageComboBox.SelectedValue = value; }
         }
 
@@ -1517,7 +1521,7 @@ namespace Ch.Cyberduck.Ui.Winforms
             {
                 DisableAll();
                 profilesButton.Checked = true;
-                panelManager.SelectedPanel = managedTransfersPanel;
+                panelManager.SelectedPanel = managedProfilesPanel;
             }
         }
     }
