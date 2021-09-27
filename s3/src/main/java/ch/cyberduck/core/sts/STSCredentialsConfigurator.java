@@ -88,11 +88,9 @@ public class STSCredentialsConfigurator {
 
     public Credentials configure(final Host host) throws LoginFailureException, LoginCanceledException {
         final Credentials credentials = new Credentials(host.getCredentials());
-        // See https://docs.aws.amazon.com/sdkref/latest/guide/creds-config-files.html for configuration behavior
-        final Local awsDirectory = LocalFactory.get(LocalFactory.get(), ".aws");
-        final Local configFile = LocalFactory.get(awsDirectory, "config");
-        final Local credentialsFile = LocalFactory.get(awsDirectory, "credentials");
-        // Profile can be null – the default profile from the configuration will be loaded
+        // Find matching profile name or AWS access key in ~/.aws/credentials
+        final Local file = LocalFactory.get(LocalFactory.get(LocalFactory.get(), ".aws"), "credentials");
+        // Profile can be null. The default profile from the configuration will be loaded
         final String profile = host.getCredentials().getUsername();
         if(log.isDebugEnabled()) {
             log.debug(String.format("Look for profile name %s in %s and %s", profile, configFile, credentialsFile));
