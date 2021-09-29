@@ -723,9 +723,16 @@ namespace Ch.Cyberduck.Ui.Winforms
             get { return systemProxyCheckBox.Checked; }
             set { systemProxyCheckBox.Checked = value; }
         }
+        public bool DebugLog
+        {
+            get { return debugLogCheckBox.Checked; }
+            set { debugLogCheckBox.Checked = value; }
+        }
 
         public event VoidHandler UseSystemProxyChangedEvent = delegate { };
         public event VoidHandler ChangeSystemProxyEvent = delegate { };
+        public event VoidHandler DebugLogChangedEvent = delegate { };
+        public event VoidHandler ShowDebugLogEvent = delegate { };
         public event VoidHandler SaveWorkspaceChangedEvent = delegate { };
         public event VoidHandler NewBrowserOnStartupChangedEvent = delegate { };
         public event VoidHandler DefaultBookmarkChangedEvent = delegate { };
@@ -1611,9 +1618,14 @@ namespace Ch.Cyberduck.Ui.Winforms
             }
         }
 
-        public void SelectProfilesTab()
+        private void debugLogCheckBox_CheckStateChanged(object sender, EventArgs e)
         {
-            profilesButton_Click(this, EventArgs.Empty);
+            DebugLogChangedEvent();
+        }
+
+        private void showDebugLogButton_Click(object sender, EventArgs e)
+        {
+            ShowDebugLogEvent();
         }
     }
 }
